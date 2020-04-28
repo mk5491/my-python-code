@@ -1,0 +1,17 @@
+--------------------------------------------------
+code for to find x,y,z value in linear equation
+
+--------------------------------------------
+import numpy as np
+from scipy import linalg
+
+x = np.array([[1,1],[4,9]])
+y = np.array([30,150])
+
+print(linalg.solve(x,y))
+print(linalg.inv(x))
+--------------------------
+from scipy.stats import norm
+norm.rvs(loc=0,scale=1,size=20)
+norm.cdf(10,loc=1,scale=3)
+norm.pdf(14,loc=1,scale=1)

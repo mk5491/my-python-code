@@ -1,0 +1,23 @@
+#Import necessary libraries
+import pandas as pd
+
+#Import the FAA dataset
+FAA = pd.read_csv('faa_ai_prelim.csv')
+print(FAA.shape)
+print(FAA.columns)
+print('------------------------------------------------------------')
+#Create a new dataframe with only the required columns
+new_faa = FAA[['ACFT_MAKE_NAME','LOC_STATE_NAME','ACFT_MODEL_NAME','RMK_TEXT','FLT_PHASE','EVENT_TYPE_DESC','FATAL_FLAG']]
+new_faa['FATAL_FLAG'].fillna(value='No', inplace=True)
+final_faa=new_faa.dropna(subset=['ACFT_MAKE_NAME'])
+print(final_faa.shape)
+print('------------------------------------------------------------')
+aircraft_type = final_faa.groupby('ACFT_MAKE_NAME')
+print(aircraft_type.size())
+print('------------------------------------------------------------')
+FATAL_FLAG_type = final_faa.groupby('FATAL_FLAG')
+print(FATAL_FLAG_type.size())
+print('------------------------------------------------------------')
+fatal_accidents=FATAL_FLAG_type.get_group('Yes')
+print(fatal_accidents)
+print('------------------------------------------------------------')
