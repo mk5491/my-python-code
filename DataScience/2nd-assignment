@@ -1,0 +1,14 @@
+import numpy as np
+country = np.array(["Great Britain", "China", "Russia", "USA", "Korea", "Japan", "Germany"])
+gold = np.array([29, 38, 24, 46, 13, 7, 11])
+silver = np.array([17, 28, 25, 28, 8, 14, 11])
+bronze = np.array([19, 22, 32, 29, 7, 17, 14])
+Max_gold_country = country[gold.argmax()]
+print("Country that won maximum gold medals is {}". format(Max_gold_country))
+More_than_20_gold = country[gold>20]
+print("countries who won more than 20 gold medals are{}".format(More_than_20_gold))
+for i in range(len(country)):
+    gold_medal = gold[i]
+    Country = country[i]
+    Total_Medal = gold[i]+silver[i]+bronze[i]
+    print("{}, gold medal - {}, Total Medals - {}".format(Country,gold_medal,Total_Medal))
